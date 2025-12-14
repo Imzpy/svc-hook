@@ -600,6 +600,10 @@ static void scan_code(void) {
     if (strstr(buf, "[stack]") != NULL) {
       continue;
     }
+    /* we do not touch vdso memory */
+    if (strstr(buf, "[vdso]") != NULL) {
+      continue;
+    }
     int mem_prot = 0;
     int i = 0;
     char addr[65] = {0};

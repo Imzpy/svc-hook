@@ -26,7 +26,8 @@ jobs:
           make -C apps/basic clean
           make
           make -C apps/basic
-          LIBSVCHOOK=./apps/basic/libsvchook_basic.so LD_PRELOAD=./libsvchook.so ls | grep "output from hook_function"
+          /lib/ld-linux-aarch64.so.1 --list-tunables
+          GLIBC_TUNABLES=glibc.rtld.seal=0 LIBSVCHOOK=./apps/basic/libsvchook_basic.so LD_PRELOAD=./libsvchook.so ls | grep "output from hook_function"
       - name: Format
         run: |
           make fmt

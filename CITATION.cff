@@ -8,3 +8,27 @@ title: "svc-hook"
 version: 0.1.0
 date-released: 2025-10-17
 url: "https://github.com/retrage/svc-hook"
+preferred-citation:
+  type: "conference-paper"
+  title: "svc-hook: hooking system calls on ARM64 by binary rewriting"
+  authors:
+    - family-names: "Moroo"
+      given-names: "Akira"
+      orcid: "https://orcid.org/0009-0007-9762-3210"
+    - family-names: "Tazaki"
+      given-names: "Hajime"
+      orcid: "https://orcid.org/0000-0002-6524-2954"
+    - family-names: "Yasukata"
+      given-names: "Kenichi"
+      orcid: "https://orcid.org/0000-0002-7866-2245"
+  doi: "10.1145/3721462.3770771"
+  collection-title: "Proceedings of the 26th International Middleware Conference"
+  year: 2025
+  month: 12
+  start: 195
+  end: 201
+  keywords:
+    - "system call hook"
+    - "binary rewriting"
+    - "ARM64"
+  url: "https://doi.org/10.1145/3721462.3770771"
