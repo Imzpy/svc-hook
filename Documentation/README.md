@@ -237,7 +237,39 @@ The following table shows the results. svc-hook reduces throughput by 0.9% and 0
 
 Based on the experimental results above, we consider that the system call hooks applied by svc-hook do not significantly negate the performance of hook-applied application programs.
 
+## Overhead Comparision with ASC-Hook
+
+ASC-Hook[asc-hook] is another binary-rewirting-based system call hook mechanism. It uses a `br x8` primitive for the `svc` instruction replacement.
+
+### Overhead of Trampoline Execution
+
+We measure the time to hook the `getpid` system call using ASC-Hook. The experiment setup is exactly same with the experiment mentioned in the section 4.1 in our paper.
+
+- ASC-Hook: 39 nsec
+- svc-hook: 14 nsec
+- LD_PRELOAD: 3 nsec
+
+The time delta with LD_PRELOAD is the pure overhead of going through the trampoline code.
+The delta is 36 nsec and 11 nsec for ASC-Hook and svc-hook. As we can see, svc-hook has less overhead compared with ASC-Hook.
+
+### Performance of Initial Setup
+
+We also measure the time to finish the execution of the initial setup function which injected by the LD_PRELOAD trick.
+
+- ASC-Hook: 1890 milisec
+- svc-hook: 25 milisec
+
+The result shows that svc-hook is 75 times faster than ASC-Hook to finish the initial setup.
+
+We consider that the primary reason of the difference is that ASC-Hook requires disassemble process in nature to find the instructions that assign the system call numbers to the x8 register. On the other hand, svc-hook uses simple binary pattern match to identify target instructions because it only need to find `svc` instructions,
+
+### Summary
+
+We consider svc-hook has less overhead compared with ASC-Hook in both trampoline code execution and initial setup.
+
 [sqlite]: https://sqlite.org
 [postgresql]: https://www.postgresql.org
 [samba]: https://www.samba.org
 [sqlite-bench]: https://github.com/ukontainer/sqlite-bench/tree/78e6cdc3d8791c28730f35ba0bd527d34aed2af4
+
+[asc-hook]: https://github.com/shinya2001/ASC-Hook
