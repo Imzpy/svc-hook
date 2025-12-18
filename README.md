@@ -100,8 +100,9 @@ When the target process executes a system call, it branches to the trampoline, w
 
 ## Further Reading
 
-- [My blog post (ja)](https://retrage.github.io/2024/07/31/svc-hook.html/): An initial introduction to svc-hook.
+- [svc-hook: hooking system calls on ARM64 by binary rewriting](https://dl.acm.org/doi/10.1145/3721462.3770771): Our paper at ACM/IFIP Middleware 2025.
 - [Supplemental Documentation](/Documentation/README.md): Supplemental documentation for svc-hook experimental results.
+- [My blog post (ja)](https://retrage.github.io/2024/07/31/svc-hook.html/): An initial introduction to svc-hook.
 
 ## License
 
